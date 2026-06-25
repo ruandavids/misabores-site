@@ -27,7 +27,7 @@
   --font-display: 'Playfair Display', serif;
 
   /* Espaçamento */
-  --header-height: 72px;
+  --header-height: 160px;
   --radius: 16px;
   --radius-sm: 10px;
   --transition: 0.3s ease;
@@ -115,9 +115,9 @@ ul {
 
 .logo__img {
   display: block;
-  height: 56px;
+  height: 144px;
   width: auto;
-  max-width: 160px;
+  max-width: 400px;
   object-fit: contain;
 }
 
@@ -1238,8 +1238,8 @@ ul {
 
 @media (max-width: 768px) {
   .logo__img {
-    height: 46px;
-    max-width: 130px;
+    height: 116px;
+    max-width: 340px;
   }
 
   .section-watermark--left,
