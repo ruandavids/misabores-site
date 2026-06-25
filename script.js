@@ -50,20 +50,23 @@ const produtos = {
       {
         icon: '🥣',
         title: 'Caldo verde',
-        desc: 'Tradicional caldo verde português, reconfortante e cheio de sabor, ideal para eventos em dias frios.',
-        color: 'verde'
+        desc: 'Tradicional e reconfortante, ideal para encomendas avulsas ou para aquecer seu evento em dias frios.',
+        color: 'verde',
+        price: 18
       },
       {
         icon: '🥣',
         title: 'Caldo de mandioquinha',
-        desc: 'Cremoso e aromático, preparado com mandioquinha fresca e temperos selecionados.',
-        color: 'verde'
+        desc: 'Cremoso e aromático, preparado com mandioquinha fresca — perfeito para pedir por unidade.',
+        color: 'verde',
+        price: 18
       },
       {
         icon: '🥣',
         title: 'Caldo de kenga',
-        desc: 'Receita especial da casa, com sabor marcante e textura encorpada que agrada a todos.',
-        color: 'verde'
+        desc: 'Receita especial da casa, com sabor marcante. Encomende avulso ou inclua no seu buffet.',
+        color: 'verde',
+        price: 20
       }
     ]
   },
@@ -73,20 +76,23 @@ const produtos = {
       {
         icon: '🍰',
         title: 'Bolo de pote',
-        desc: 'Bolos de pote artesanais em diversos sabores, perfeitos para lembrancinhas e sobremesas.',
-        color: 'rosa'
+        desc: 'Bolos artesanais em diversos sabores, ideais para sobremesa do dia a dia ou lembrancinhas.',
+        color: 'rosa',
+        price: 9
       },
       {
         icon: '🍫',
-        title: 'Brigadeiros comuns',
-        desc: 'Brigadeiros clássicos feitos com chocolate de qualidade, macios e irresistíveis.',
-        color: 'rosa'
+        title: 'Brigadeiro comum',
+        desc: 'Clássico irresistível, feito com chocolate de qualidade. Peça a quantidade que precisar.',
+        color: 'rosa',
+        price: 2.5
       },
       {
         icon: '✨',
-        title: 'Brigadeiros personalizados',
-        desc: 'Brigadeiros decorados e personalizados para combinar com o tema do seu evento.',
-        color: 'rosa'
+        title: 'Brigadeiro personalizado',
+        desc: 'Decorados para festas e encomendas especiais. Personalize conforme sua ocasião.',
+        color: 'rosa',
+        price: 4
       }
     ]
   },
@@ -96,26 +102,30 @@ const produtos = {
       {
         icon: '🥟',
         title: 'Mini coxinha',
-        desc: 'Coxinhas crocantes por fora e recheadas com frango temperado, tamanho ideal para festas.',
-        color: 'laranja'
+        desc: 'Crocantes e recheadas com frango temperado — ótimas para lanches e festas.',
+        color: 'laranja',
+        price: 1.8
       },
       {
         icon: '🥙',
-        title: 'Esfirras',
-        desc: 'Esfirras assadas com massa macia e recheios variados, sempre saindo quentinhas do forno.',
-        color: 'laranja'
+        title: 'Esfirra',
+        desc: 'Massa macia e recheios variados, sempre assadas na hora. Peça por unidade.',
+        color: 'laranja',
+        price: 2.5
       },
       {
         icon: '🧁',
         title: 'Bolo salgado de pote',
-        desc: 'Camadas de pão, recheios cremosos e cobertura saborosa, prático e elegante para servir.',
-        color: 'laranja'
+        desc: 'Prático e saboroso, com camadas generosas de recheio. Ideal para encomendas individuais.',
+        color: 'laranja',
+        price: 12
       },
       {
         icon: '🥧',
         title: 'Torta salgada',
-        desc: 'Tortas salgadas generosas com recheios variados, perfeitas para coffee breaks e festas.',
-        color: 'laranja'
+        desc: 'Generosa e versátil, perfeita para reunir a família ou complementar seu pedido.',
+        color: 'laranja',
+        price: 65
       }
     ]
   }
@@ -130,19 +140,32 @@ function buildWhatsAppLink(message) {
   return `${WHATSAPP_URL}?text=${encoded}`;
 }
 
-function createCard({ icon, title, desc, color, message }) {
+function formatCurrency(value) {
+  return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+}
+
+function createCard({ icon, title, desc, color, message, price, ctaHref, ctaText }) {
   const card = document.createElement('article');
   card.className = `card card--${color} fade-in`;
 
-  const linkMessage = message || `Olá! Tenho interesse em ${title}. Pode me passar mais informações?`;
-  const waLink = buildWhatsAppLink(linkMessage);
+  const priceHtml = price != null
+    ? `<span class="card__price">${formatCurrency(price)} <small>/ unidade</small></span>`
+    : '';
+
+  const linkHref = ctaHref || buildWhatsAppLink(message || `Olá! Tenho interesse em ${title}. Pode me passar mais informações?`);
+  const linkText = ctaText || 'Pedir informações →';
+  const isInternal = ctaHref && ctaHref.startsWith('#');
+  const linkAttrs = isInternal
+    ? `href="${linkHref}" data-open-panel="avulsos"`
+    : `href="${linkHref}" target="_blank" rel="noopener noreferrer"`;
 
   card.innerHTML = `
     <span class="card__icon" aria-hidden="true">${icon}</span>
     <h3 class="card__title">${title}</h3>
+    ${priceHtml}
     <p class="card__desc">${desc}</p>
-    <a href="${waLink}" class="card__link" target="_blank" rel="noopener noreferrer">
-      Pedir informações →
+    <a ${linkAttrs} class="card__link">
+      ${linkText}
     </a>
   `;
 
@@ -172,7 +195,11 @@ function renderProdutos(categoria = 'caldos') {
   if (!categoriaData) return;
 
   categoriaData.items.forEach((produto) => {
-    grid.appendChild(createCard(produto));
+    grid.appendChild(createCard({
+      ...produto,
+      ctaHref: '#faca-seu-pedido',
+      ctaText: 'Encomendar →'
+    }));
   });
 
   observeFadeElements();
@@ -372,9 +399,46 @@ const pedidoCatalog = [
   }
 ];
 
-function formatCurrency(value) {
-  return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-}
+/* --------------------------------------------
+   Produtos individuais — catálogo avulso
+   -------------------------------------------- */
+
+const produtosIndividuaisCatalog = [
+  {
+    id: 'caldos',
+    label: 'Caldos',
+    icon: '🥣',
+    color: 'verde',
+    items: [
+      { id: 'caldo-verde', name: 'Caldo verde', price: 18 },
+      { id: 'caldo-mandioquinha', name: 'Caldo de mandioquinha', price: 18 },
+      { id: 'caldo-kenga', name: 'Caldo de kenga', price: 20 }
+    ]
+  },
+  {
+    id: 'doces',
+    label: 'Doces',
+    icon: '🍰',
+    color: 'rosa',
+    items: [
+      { id: 'bolo-pote-avulso', name: 'Bolo de pote', price: 9 },
+      { id: 'brigadeiro-comum-avulso', name: 'Brigadeiro comum', price: 2.5 },
+      { id: 'brigadeiro-personalizado-avulso', name: 'Brigadeiro personalizado', price: 4 }
+    ]
+  },
+  {
+    id: 'salgados',
+    label: 'Salgados',
+    icon: '🥟',
+    color: 'laranja',
+    items: [
+      { id: 'mini-coxinha-avulso', name: 'Mini coxinha', price: 1.8 },
+      { id: 'esfirra-avulso', name: 'Esfirra', price: 2.5 },
+      { id: 'bolo-salgado-pote-avulso', name: 'Bolo salgado de pote', price: 12 },
+      { id: 'torta-salgada-avulso', name: 'Torta salgada', price: 65 }
+    ]
+  }
+];
 
 function getTotalPessoas() {
   const adultos = parseInt(document.getElementById('qtdAdultos')?.value, 10) || 0;
@@ -621,8 +685,7 @@ function initPedidoEvents() {
   });
 
   form.addEventListener('change', (e) => {
-    const target = e.target;
-    if (target.classList.contains('pedido-item__check')) {
+    if (e.target.classList.contains('pedido-item__check')) {
       atualizarPedido();
     }
   });
@@ -636,23 +699,255 @@ function initPedidoEvents() {
   document.getElementById('btnEnviarPedido')?.addEventListener('click', enviarPedidoWhatsApp);
   document.getElementById('btnEnviarPedidoMobile')?.addEventListener('click', enviarPedidoWhatsApp);
 
-  const pedidoSection = document.getElementById('monte-seu-pedido');
-  if (pedidoSection) {
-    const sectionObserver = new IntersectionObserver(
-      ([entry]) => {
-        pedidoSection.classList.toggle('in-view', entry.isIntersecting);
-      },
-      { threshold: 0.05 }
-    );
-    sectionObserver.observe(pedidoSection);
-  }
-
   atualizarPedido();
 }
 
 function initPedido() {
   renderPedidoCategorias();
   initPedidoEvents();
+}
+
+/* --------------------------------------------
+   Produtos individuais — renderização e cálculo
+   -------------------------------------------- */
+
+function renderAvulsosCategorias() {
+  const container = document.getElementById('avulsosCategorias');
+  if (!container) return;
+
+  container.innerHTML = '';
+
+  produtosIndividuaisCatalog.forEach((categoria) => {
+    const block = document.createElement('div');
+    block.className = `pedido-categoria pedido-categoria--${categoria.color}`;
+    block.dataset.categoria = categoria.id;
+
+    const itensHtml = categoria.items.map((item) => `
+      <div class="avulso-item" data-avulso-id="${item.id}">
+        <div class="avulso-item__info">
+          <div class="avulso-item__nome">${item.name}</div>
+          <div class="avulso-item__preco">${formatCurrency(item.price)} / unidade</div>
+        </div>
+        <div class="avulso-item__qty-wrap">
+          <span class="pedido-item__qty-label">Qtd.</span>
+          <input type="number" class="avulso-item__qty" id="avulso-qty-${item.id}"
+            min="0" value="0" data-categoria="${categoria.id}" data-item="${item.id}"
+            aria-label="Quantidade de ${item.name}">
+        </div>
+        <div class="avulso-item__subtotal" data-avulso-subtotal="${item.id}">${formatCurrency(0)}</div>
+      </div>
+    `).join('');
+
+    block.innerHTML = `
+      <div class="pedido-categoria__header">
+        <h3 class="pedido-categoria__title">
+          <span class="pedido-categoria__icon" aria-hidden="true">${categoria.icon}</span>
+          ${categoria.label}
+        </h3>
+        <span class="pedido-categoria__subtotal" data-avulso-subtotal-cat="${categoria.id}">${formatCurrency(0)}</span>
+      </div>
+      <div class="pedido-categoria__itens">${itensHtml}</div>
+    `;
+
+    container.appendChild(block);
+  });
+}
+
+function findAvulsoItem(categoriaId, itemId) {
+  const categoria = produtosIndividuaisCatalog.find((c) => c.id === categoriaId);
+  return categoria?.items.find((i) => i.id === itemId) || null;
+}
+
+function atualizarAvulsos() {
+  const resumoItens = [];
+  const subtotaisPorCategoria = {};
+  let totalGeral = 0;
+
+  produtosIndividuaisCatalog.forEach((categoria) => {
+    subtotaisPorCategoria[categoria.id] = { label: categoria.label, total: 0 };
+  });
+
+  document.querySelectorAll('.avulso-item__qty').forEach((input) => {
+    const categoriaId = input.dataset.categoria;
+    const itemId = input.dataset.item;
+    const item = findAvulsoItem(categoriaId, itemId);
+    if (!item) return;
+
+    const qty = parseInt(input.value, 10) || 0;
+    const subtotal = item.price * qty;
+    const row = input.closest('.avulso-item');
+    const subtotalEl = document.querySelector(`[data-avulso-subtotal="${itemId}"]`);
+
+    if (row) row.classList.toggle('has-qty', qty > 0);
+    if (subtotalEl) subtotalEl.textContent = formatCurrency(subtotal);
+
+    if (qty > 0) {
+      subtotaisPorCategoria[categoriaId].total += subtotal;
+      totalGeral += subtotal;
+      resumoItens.push({ name: item.name, qty, value: subtotal });
+    }
+  });
+
+  produtosIndividuaisCatalog.forEach((categoria) => {
+    const catEl = document.querySelector(`[data-avulso-subtotal-cat="${categoria.id}"]`);
+    if (catEl) catEl.textContent = formatCurrency(subtotaisPorCategoria[categoria.id].total);
+  });
+
+  const itensEl = document.getElementById('avulsosResumoItens');
+  const subtotaisEl = document.getElementById('avulsosResumoSubtotais');
+  const totalEl = document.getElementById('avulsosResumoTotal');
+  const totalMobileEl = document.getElementById('avulsosTotalMobile');
+
+  if (totalEl) totalEl.textContent = formatCurrency(totalGeral);
+  if (totalMobileEl) totalMobileEl.textContent = formatCurrency(totalGeral);
+
+  if (itensEl) {
+    if (resumoItens.length === 0) {
+      itensEl.innerHTML = '<p class="pedido__resumo-vazio">Nenhum produto adicionado ainda.</p>';
+    } else {
+      itensEl.innerHTML = resumoItens.map((item) => `
+        <div class="pedido__resumo-item">
+          <span class="pedido__resumo-item-nome">${item.name} <small>(${item.qty} un.)</small></span>
+          <span class="pedido__resumo-item-valor">${formatCurrency(item.value)}</span>
+        </div>
+      `).join('');
+    }
+  }
+
+  if (subtotaisEl) {
+    const catsComValor = Object.values(subtotaisPorCategoria).filter((cat) => cat.total > 0);
+    subtotaisEl.innerHTML = catsComValor.length
+      ? catsComValor.map((cat) => `
+          <div class="pedido__resumo-cat">
+            <span>${cat.label}</span>
+            <strong>${formatCurrency(cat.total)}</strong>
+          </div>
+        `).join('')
+      : '';
+  }
+
+  return { totalGeral, resumoItens, subtotaisPorCategoria };
+}
+
+function montarMensagemAvulsosWhatsApp() {
+  const nome = document.getElementById('avulsosNome')?.value.trim() || 'Não informado';
+  const whatsapp = document.getElementById('avulsosWhatsapp')?.value.trim() || 'Não informado';
+  const { totalGeral, resumoItens } = atualizarAvulsos();
+
+  let mensagem = `*Pedido MiSabores — Pedidos avulsos*\n\n`;
+  mensagem += `*Nome do cliente:* ${nome}\n`;
+  mensagem += `*WhatsApp:* ${whatsapp}\n\n`;
+
+  if (resumoItens.length > 0) {
+    mensagem += `*Produtos escolhidos:*\n`;
+    resumoItens.forEach((item) => {
+      mensagem += `• ${item.name} — ${item.qty} un. — ${formatCurrency(item.value)}\n`;
+    });
+  } else {
+    mensagem += `*Produtos escolhidos:* Nenhum produto selecionado\n`;
+  }
+
+  mensagem += `\n*Total estimado:* ${formatCurrency(totalGeral)}\n\n`;
+  mensagem += `_Este valor é uma estimativa inicial e será confirmado pela equipe MiSabores._`;
+
+  return mensagem;
+}
+
+function enviarAvulsosWhatsApp() {
+  const nome = document.getElementById('avulsosNome')?.value.trim();
+  const { resumoItens } = atualizarAvulsos();
+
+  if (!nome) {
+    document.getElementById('avulsosNome')?.focus();
+    alert('Por favor, informe seu nome antes de enviar o pedido.');
+    return;
+  }
+
+  if (resumoItens.length === 0) {
+    alert('Adicione pelo menos um produto ao pedido.');
+    return;
+  }
+
+  window.open(buildWhatsAppLink(montarMensagemAvulsosWhatsApp()), '_blank', 'noopener,noreferrer');
+}
+
+function initAvulsosEvents() {
+  const form = document.getElementById('avulsosForm');
+  if (!form) return;
+
+  form.addEventListener('input', (e) => {
+    if (e.target.classList.contains('avulso-item__qty')) {
+      const val = parseInt(e.target.value, 10);
+      if (val < 0) e.target.value = 0;
+      atualizarAvulsos();
+    }
+  });
+
+  document.getElementById('btnEnviarAvulsos')?.addEventListener('click', enviarAvulsosWhatsApp);
+  document.getElementById('btnEnviarAvulsosMobile')?.addEventListener('click', enviarAvulsosWhatsApp);
+
+  atualizarAvulsos();
+}
+
+function initAvulsos() {
+  renderAvulsosCategorias();
+  initAvulsosEvents();
+}
+
+/* --------------------------------------------
+   Faça seu Pedido — painéis e navegação
+   -------------------------------------------- */
+
+function openPedidoPanel(tipo) {
+  const section = document.getElementById('faca-seu-pedido');
+  const panelBuffet = document.getElementById('panelBuffet');
+  const panelAvulsos = document.getElementById('panelAvulsos');
+  const choiceBuffet = document.querySelector('.faca-pedido__choice--buffet');
+  const choiceAvulso = document.querySelector('.faca-pedido__choice--avulso');
+
+  if (!section || !panelBuffet || !panelAvulsos) return;
+
+  section.classList.remove('panel-buffet-open', 'panel-avulsos-open');
+
+  if (tipo === 'buffet') {
+    panelBuffet.hidden = false;
+    choiceBuffet?.classList.add('is-active');
+    choiceAvulso?.classList.remove('is-active');
+    section.classList.add('panel-buffet-open');
+    setTimeout(() => panelBuffet.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+  } else {
+    panelAvulsos.hidden = false;
+    choiceAvulso?.classList.add('is-active');
+    choiceBuffet?.classList.remove('is-active');
+    section.classList.add('panel-avulsos-open');
+    setTimeout(() => panelAvulsos.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+  }
+}
+
+function initFacaPedido() {
+  document.getElementById('btnAbrirBuffet')?.addEventListener('click', () => openPedidoPanel('buffet'));
+  document.getElementById('btnAbrirAvulsos')?.addEventListener('click', () => openPedidoPanel('avulsos'));
+  document.getElementById('linkProdutosPedido')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    openPedidoPanel('avulsos');
+  });
+
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('[data-open-panel="avulsos"]');
+    if (link) {
+      e.preventDefault();
+      openPedidoPanel('avulsos');
+    }
+  });
+
+  const section = document.getElementById('faca-seu-pedido');
+  if (section) {
+    const observer = new IntersectionObserver(
+      ([entry]) => section.classList.toggle('in-view', entry.isIntersecting),
+      { threshold: 0.05 }
+    );
+    observer.observe(section);
+  }
 }
 
 /* --------------------------------------------
@@ -664,6 +959,8 @@ document.addEventListener('DOMContentLoaded', () => {
   renderTabs();
   renderProdutos('caldos');
   initPedido();
+  initAvulsos();
+  initFacaPedido();
   initMobileNav();
   initHeaderScroll();
   initActiveNav();

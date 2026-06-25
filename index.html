@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="MiSabores — Buffet para festas e eventos em São Paulo. Sabor que fica na memória.">
-  <title>MiSabores | Buffet para Festas e Eventos</title>
+  <meta name="description" content="MiSabores — Buffet para festas, caldos, doces e salgados em São Paulo. Sabor que fica na memória.">
+  <title>MiSabores | Buffet, Caldos, Doces e Salgados</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
@@ -31,7 +31,7 @@
           <li><a href="#sobre" class="nav__link">Sobre</a></li>
           <li><a href="#servicos" class="nav__link">Serviços</a></li>
           <li><a href="#produtos" class="nav__link">Produtos</a></li>
-          <li><a href="#monte-seu-pedido" class="nav__link">Monte seu Pedido</a></li>
+          <li><a href="#faca-seu-pedido" class="nav__link">Faça seu Pedido</a></li>
           <li><a href="#contato" class="nav__link nav__link--cta">Contato</a></li>
         </ul>
       </nav>
@@ -46,17 +46,17 @@
       </div>
       <div class="hero__overlay"></div>
       <div class="container hero__content">
-        <p class="hero__tag">Buffet &amp; Eventos · Perus, São Paulo</p>
+        <p class="hero__tag">Buffet, Caldos &amp; Delícias · Perus, São Paulo</p>
         <h1 class="hero__title">Sabor que fica na <span>memória</span></h1>
         <p class="hero__subtitle">
-          Transformamos sua festa ou evento em uma experiência gastronômica inesquecível,
-          com buffet completo e equipe especializada para cuidar de cada detalhe.
+          Buffet completo para festas e eventos, além de caldos, doces e salgados
+          para encomendas individuais — tudo preparado com carinho e qualidade.
         </p>
         <div class="hero__actions">
-          <a href="https://wa.me/5511982745572?text=Olá! Gostaria de solicitar um orçamento para meu evento." class="btn btn--primary" target="_blank" rel="noopener noreferrer">
-            Solicitar orçamento
+          <a href="#faca-seu-pedido" class="btn btn--primary">
+            Faça seu pedido
           </a>
-          <a href="#servicos" class="btn btn--outline">Conheça nossos serviços</a>
+          <a href="#produtos" class="btn btn--outline">Ver nossos produtos</a>
         </div>
       </div>
       <div class="hero__decor" aria-hidden="true">
@@ -89,7 +89,7 @@
             </p>
             <ul class="sobre__highlights">
               <li>Buffet personalizado para cada ocasião</li>
-              <li>Equipe experiente e atenciosa</li>
+              <li>Caldos, doces e salgados para encomendas avulsas</li>
               <li>Produtos frescos e feitos com carinho</li>
               <li>Atendimento em São Paulo e região</li>
             </ul>
@@ -137,11 +137,17 @@
       </div>
       <div class="container">
         <div class="section__header section__header--center">
-          <span class="section__label">Cardápio</span>
+          <span class="section__label">Encomendas avulsas</span>
           <h2 class="section__title">Nossos Produtos</h2>
           <p class="section__desc">
-            Delícias preparadas com ingredientes selecionados para encantar seus convidados.
+            Caldos, doces e salgados preparados com ingredientes selecionados — perfeitos para
+            o dia a dia, encomendas individuais e para complementar seu evento.
           </p>
+        </div>
+
+        <div class="produtos__cta">
+          <p>Quer pedir por unidade? Monte seu pedido avulso em poucos cliques.</p>
+          <a href="#faca-seu-pedido" class="btn btn--secondary" id="linkProdutosPedido">Fazer pedido avulso</a>
         </div>
 
         <div class="produtos__tabs" id="produtosTabs" role="tablist" aria-label="Categorias de produtos">
@@ -154,105 +160,188 @@
       </div>
     </section>
 
-    <!-- Monte seu Pedido -->
-    <section class="section pedido" id="monte-seu-pedido">
+    <!-- Faça seu Pedido -->
+    <section class="section faca-pedido" id="faca-seu-pedido">
       <div class="section-watermark section-watermark--right" aria-hidden="true">
         <img src="imagens/main-logo.png" alt="">
       </div>
       <div class="container container--wide">
         <div class="section__header section__header--center">
-          <span class="section__label">Orçamento rápido</span>
-          <h2 class="section__title">Monte seu buffet</h2>
+          <span class="section__label">Como prefere pedir?</span>
+          <h2 class="section__title">Faça seu Pedido</h2>
           <p class="section__desc">
-            Preencha as informações do seu evento e monte uma estimativa inicial do seu pedido.
+            A MiSabores atende desde eventos completos com buffet até encomendas avulsas de caldos, doces e salgados.
           </p>
         </div>
 
-        <div class="pedido__layout">
-          <div class="pedido__main">
-            <form class="pedido__form" id="pedidoForm" novalidate>
-              <fieldset class="pedido__fieldset">
-                <legend class="pedido__legend">Dados do evento</legend>
-                <div class="form-grid">
-                  <label class="form-field">
-                    <span class="form-field__label">Nome do cliente</span>
-                    <input type="text" id="clienteNome" name="nome" placeholder="Seu nome completo" required>
-                  </label>
-                  <label class="form-field">
-                    <span class="form-field__label">WhatsApp</span>
-                    <input type="tel" id="clienteWhatsapp" name="whatsapp" placeholder="(11) 99999-9999">
-                  </label>
-                  <label class="form-field">
-                    <span class="form-field__label">Tipo de evento</span>
-                    <select id="tipoEvento" name="tipoEvento">
-                      <option value="Aniversário">Aniversário</option>
-                      <option value="Casamento">Casamento</option>
-                      <option value="Evento corporativo">Evento corporativo</option>
-                      <option value="Confraternização">Confraternização</option>
-                      <option value="Chá de bebê">Chá de bebê</option>
-                      <option value="Outro">Outro</option>
-                    </select>
-                  </label>
-                  <label class="form-field">
-                    <span class="form-field__label">Data prevista do evento</span>
-                    <input type="date" id="dataEvento" name="dataEvento">
-                  </label>
-                  <label class="form-field">
-                    <span class="form-field__label">Quantidade de adultos</span>
-                    <input type="number" id="qtdAdultos" name="adultos" min="0" value="0">
-                  </label>
-                  <label class="form-field">
-                    <span class="form-field__label">Quantidade de crianças</span>
-                    <input type="number" id="qtdCriancas" name="criancas" min="0" value="0">
-                  </label>
-                  <label class="form-field form-field--full">
-                    <span class="form-field__label">Bairro/Cidade do evento</span>
-                    <input type="text" id="localEvento" name="local" placeholder="Ex.: Perus, São Paulo">
-                  </label>
-                </div>
-              </fieldset>
+        <div class="faca-pedido__choices">
+          <article class="faca-pedido__choice faca-pedido__choice--buffet">
+            <span class="faca-pedido__choice-icon" aria-hidden="true">🎉</span>
+            <h3 class="faca-pedido__choice-title">Monte seu Buffet</h3>
+            <p class="faca-pedido__choice-desc">
+              Monte uma estimativa para seu evento com buffet completo, serviços adicionais,
+              equipe e opções personalizadas.
+            </p>
+            <button type="button" class="btn btn--primary" id="btnAbrirBuffet">Montar meu buffet</button>
+          </article>
 
-              <div id="pedidoCategorias" class="pedido__categorias" aria-live="polite">
-                <!-- Preenchido via JavaScript -->
-              </div>
-            </form>
-          </div>
-
-          <aside class="pedido__resumo" id="pedidoResumo" aria-label="Resumo do pedido">
-            <div class="pedido__resumo-inner">
-              <h3 class="pedido__resumo-title">Resumo do pedido</h3>
-              <div class="pedido__resumo-pessoas">
-                <span>Total de pessoas</span>
-                <strong id="resumoPessoas">0</strong>
-              </div>
-              <div class="pedido__resumo-itens" id="resumoItens">
-                <p class="pedido__resumo-vazio">Nenhum item selecionado ainda.</p>
-              </div>
-              <div class="pedido__resumo-subtotais" id="resumoSubtotais"></div>
-              <div class="pedido__resumo-total">
-                <span>Valor total estimado</span>
-                <strong id="resumoTotal">R$ 0,00</strong>
-              </div>
-              <p class="pedido__resumo-nota">
-                Valores provisórios para simulação. O orçamento final pode variar.
-              </p>
-              <button type="button" class="btn btn--primary btn--large btn--block" id="btnEnviarPedido">
-                Enviar pedido pelo WhatsApp
-              </button>
-            </div>
-          </aside>
+          <article class="faca-pedido__choice faca-pedido__choice--avulso">
+            <span class="faca-pedido__choice-icon" aria-hidden="true">🛒</span>
+            <h3 class="faca-pedido__choice-title">Pedidos avulsos</h3>
+            <p class="faca-pedido__choice-desc">
+              Escolha caldos, doces, salgados e outras opções para pedidos avulsos.
+            </p>
+            <button type="button" class="btn btn--secondary" id="btnAbrirAvulsos">Fazer pedido avulso</button>
+          </article>
         </div>
-      </div>
 
-      <div class="pedido__mobile-bar" id="pedidoMobileBar" aria-hidden="true">
-        <div class="pedido__mobile-bar-inner">
-          <div>
-            <span class="pedido__mobile-label">Total estimado</span>
-            <strong id="resumoTotalMobile">R$ 0,00</strong>
+        <!-- Área 1: Monte seu Buffet -->
+        <div class="faca-pedido__panel faca-pedido__panel--buffet" id="panelBuffet" hidden>
+          <div class="faca-pedido__panel-header">
+            <span class="faca-pedido__panel-badge">Eventos</span>
+            <h3 class="faca-pedido__panel-title">Monte seu Buffet</h3>
+            <p class="faca-pedido__panel-desc">Simule o orçamento do seu evento com buffet, equipe e opções personalizadas.</p>
           </div>
-          <button type="button" class="btn btn--primary" id="btnEnviarPedidoMobile">
-            Enviar pelo WhatsApp
-          </button>
+
+          <div class="pedido__layout">
+            <div class="pedido__main">
+              <form class="pedido__form" id="pedidoForm" novalidate>
+                <fieldset class="pedido__fieldset">
+                  <legend class="pedido__legend">Dados do evento</legend>
+                  <div class="form-grid">
+                    <label class="form-field">
+                      <span class="form-field__label">Nome do cliente</span>
+                      <input type="text" id="clienteNome" name="nome" placeholder="Seu nome completo" required>
+                    </label>
+                    <label class="form-field">
+                      <span class="form-field__label">WhatsApp</span>
+                      <input type="tel" id="clienteWhatsapp" name="whatsapp" placeholder="(11) 99999-9999">
+                    </label>
+                    <label class="form-field">
+                      <span class="form-field__label">Tipo de evento</span>
+                      <select id="tipoEvento" name="tipoEvento">
+                        <option value="Aniversário">Aniversário</option>
+                        <option value="Casamento">Casamento</option>
+                        <option value="Evento corporativo">Evento corporativo</option>
+                        <option value="Confraternização">Confraternização</option>
+                        <option value="Chá de bebê">Chá de bebê</option>
+                        <option value="Outro">Outro</option>
+                      </select>
+                    </label>
+                    <label class="form-field">
+                      <span class="form-field__label">Data prevista do evento</span>
+                      <input type="date" id="dataEvento" name="dataEvento">
+                    </label>
+                    <label class="form-field">
+                      <span class="form-field__label">Quantidade de adultos</span>
+                      <input type="number" id="qtdAdultos" name="adultos" min="0" value="0">
+                    </label>
+                    <label class="form-field">
+                      <span class="form-field__label">Quantidade de crianças</span>
+                      <input type="number" id="qtdCriancas" name="criancas" min="0" value="0">
+                    </label>
+                    <label class="form-field form-field--full">
+                      <span class="form-field__label">Bairro/Cidade do evento</span>
+                      <input type="text" id="localEvento" name="local" placeholder="Ex.: Perus, São Paulo">
+                    </label>
+                  </div>
+                </fieldset>
+
+                <div id="pedidoCategorias" class="pedido__categorias" aria-live="polite"></div>
+              </form>
+            </div>
+
+            <aside class="pedido__resumo" id="pedidoResumo" aria-label="Resumo do buffet">
+              <div class="pedido__resumo-inner">
+                <h3 class="pedido__resumo-title">Resumo do buffet</h3>
+                <div class="pedido__resumo-pessoas">
+                  <span>Total de pessoas</span>
+                  <strong id="resumoPessoas">0</strong>
+                </div>
+                <div class="pedido__resumo-itens" id="resumoItens">
+                  <p class="pedido__resumo-vazio">Nenhum item selecionado ainda.</p>
+                </div>
+                <div class="pedido__resumo-subtotais" id="resumoSubtotais"></div>
+                <div class="pedido__resumo-total">
+                  <span>Valor total estimado</span>
+                  <strong id="resumoTotal">R$ 0,00</strong>
+                </div>
+                <p class="pedido__resumo-nota">Valores provisórios para simulação. O orçamento final pode variar.</p>
+                <button type="button" class="btn btn--primary btn--large btn--block" id="btnEnviarPedido">
+                  Enviar pedido pelo WhatsApp
+                </button>
+              </div>
+            </aside>
+          </div>
+
+          <div class="pedido__mobile-bar pedido__mobile-bar--buffet" id="pedidoMobileBar" aria-hidden="true">
+            <div class="pedido__mobile-bar-inner">
+              <div>
+                <span class="pedido__mobile-label">Total do buffet</span>
+                <strong id="resumoTotalMobile">R$ 0,00</strong>
+              </div>
+              <button type="button" class="btn btn--primary" id="btnEnviarPedidoMobile">Enviar pelo WhatsApp</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Área 2: Pedidos avulsos -->
+        <div class="faca-pedido__panel faca-pedido__panel--avulsos" id="panelAvulsos" hidden>
+          <div class="faca-pedido__panel-header">
+            <span class="faca-pedido__panel-badge faca-pedido__panel-badge--avulso">Encomendas</span>
+            <h3 class="faca-pedido__panel-title">Pedidos avulsos</h3>
+            <p class="faca-pedido__panel-desc">Informe a quantidade de cada produto e envie seu pedido avulso pelo WhatsApp.</p>
+          </div>
+
+          <div class="pedido__layout">
+            <div class="pedido__main">
+              <form class="pedido__form" id="avulsosForm" novalidate>
+                <fieldset class="pedido__fieldset">
+                  <legend class="pedido__legend">Seus dados</legend>
+                  <div class="form-grid">
+                    <label class="form-field">
+                      <span class="form-field__label">Nome do cliente</span>
+                      <input type="text" id="avulsosNome" placeholder="Seu nome completo" required>
+                    </label>
+                    <label class="form-field">
+                      <span class="form-field__label">WhatsApp</span>
+                      <input type="tel" id="avulsosWhatsapp" placeholder="(11) 99999-9999">
+                    </label>
+                  </div>
+                </fieldset>
+
+                <div id="avulsosCategorias" class="pedido__categorias" aria-live="polite"></div>
+              </form>
+            </div>
+
+            <aside class="pedido__resumo" id="avulsosResumo" aria-label="Resumo dos pedidos avulsos">
+              <div class="pedido__resumo-inner pedido__resumo-inner--avulsos">
+                <h3 class="pedido__resumo-title">Resumo do pedido</h3>
+                <div class="pedido__resumo-itens" id="avulsosResumoItens">
+                  <p class="pedido__resumo-vazio">Nenhum produto adicionado ainda.</p>
+                </div>
+                <div class="pedido__resumo-subtotais" id="avulsosResumoSubtotais"></div>
+                <div class="pedido__resumo-total">
+                  <span>Total estimado</span>
+                  <strong id="avulsosResumoTotal">R$ 0,00</strong>
+                </div>
+                <p class="pedido__resumo-nota">Valores provisórios para simulação. O pedido será confirmado pela equipe.</p>
+                <button type="button" class="btn btn--secondary btn--large btn--block" id="btnEnviarAvulsos">
+                  Enviar pedido pelo WhatsApp
+                </button>
+              </div>
+            </aside>
+          </div>
+
+          <div class="pedido__mobile-bar pedido__mobile-bar--avulsos" id="avulsosMobileBar" aria-hidden="true">
+            <div class="pedido__mobile-bar-inner">
+              <div>
+                <span class="pedido__mobile-label">Total do pedido</span>
+                <strong id="avulsosTotalMobile">R$ 0,00</strong>
+              </div>
+              <button type="button" class="btn btn--secondary" id="btnEnviarAvulsosMobile">Enviar pelo WhatsApp</button>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -284,6 +373,13 @@
               <div>
                 <h3>WhatsApp</h3>
                 <p><a href="https://wa.me/5511982745572" target="_blank" rel="noopener noreferrer">+55 11 98274-5572</a></p>
+              </div>
+            </div>
+            <div class="contato__item">
+              <span class="contato__icon" aria-hidden="true">📷</span>
+              <div>
+                <h3>Instagram</h3>
+                <p><a href="https://www.instagram.com/mi.sabores01" target="_blank" rel="noopener noreferrer">@mi.sabores01</a></p>
               </div>
             </div>
             <div class="contato__item">

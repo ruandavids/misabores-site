@@ -635,6 +635,224 @@ ul {
   background: var(--branco);
 }
 
+.produtos__cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem 1.5rem;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 2.5rem;
+  background: linear-gradient(135deg, var(--rosa-suave), #e8f6f4);
+  border-radius: var(--radius);
+  border: 2px solid rgba(232, 74, 111, 0.15);
+}
+
+.produtos__cta p {
+  font-weight: 700;
+  color: var(--azul-petroleo);
+  margin: 0;
+}
+
+.card__price {
+  display: inline-block;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--rosa);
+  margin-bottom: 0.5rem;
+}
+
+.card__price small {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--texto-suave);
+}
+
+/* ============================================
+   Faça seu Pedido
+   ============================================ */
+
+.faca-pedido {
+  background: var(--fundo-alt);
+}
+
+.faca-pedido .section-watermark img {
+  opacity: 0.06;
+}
+
+.faca-pedido__choices {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.faca-pedido__choice {
+  background: var(--branco);
+  border-radius: var(--radius);
+  padding: 2rem 1.75rem;
+  box-shadow: 0 4px 24px var(--sombra);
+  text-align: center;
+  border-top: 5px solid var(--azul-petroleo);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.faca-pedido__choice:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px var(--sombra-media);
+}
+
+.faca-pedido__choice--buffet {
+  border-top-color: var(--rosa);
+}
+
+.faca-pedido__choice--avulso {
+  border-top-color: var(--verde-agua);
+}
+
+.faca-pedido__choice.is-active {
+  outline: 3px solid var(--azul-petroleo);
+  outline-offset: 3px;
+}
+
+.faca-pedido__choice-icon {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.faca-pedido__choice-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--azul-petroleo);
+  margin-bottom: 0.75rem;
+}
+
+.faca-pedido__choice-desc {
+  color: var(--texto-suave);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.55;
+}
+
+.faca-pedido__panel {
+  margin-bottom: 3rem;
+  padding-top: 1rem;
+  border-top: 3px solid var(--fundo-alt);
+}
+
+.faca-pedido__panel[hidden] {
+  display: none;
+}
+
+.faca-pedido__panel-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.faca-pedido__panel-badge {
+  display: inline-block;
+  padding: 0.35rem 1rem;
+  background: var(--rosa-suave);
+  color: var(--rosa);
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-radius: 50px;
+  margin-bottom: 0.75rem;
+}
+
+.faca-pedido__panel-badge--avulso {
+  background: #e0f5f2;
+  color: var(--verde-agua);
+}
+
+.faca-pedido__panel-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: var(--azul-petroleo);
+  margin-bottom: 0.5rem;
+}
+
+.faca-pedido__panel-desc {
+  color: var(--texto-suave);
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.pedido__resumo-inner--avulsos {
+  border-color: rgba(61, 175, 160, 0.25);
+}
+
+.pedido__resumo-inner--avulsos .pedido__resumo-total {
+  background: linear-gradient(135deg, var(--verde-agua), var(--azul-petroleo-claro));
+}
+
+/* Itens avulsos — quantidade sem checkbox */
+.avulso-item {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.85rem 1.5rem;
+  border-bottom: 1px solid var(--fundo-alt);
+}
+
+.avulso-item:last-child {
+  border-bottom: none;
+}
+
+.avulso-item.has-qty {
+  background: #f0faf8;
+}
+
+.avulso-item__nome {
+  font-weight: 700;
+  color: var(--texto);
+  font-size: 0.95rem;
+}
+
+.avulso-item__preco {
+  font-size: 0.8rem;
+  color: var(--texto-suave);
+  margin-top: 0.15rem;
+}
+
+.avulso-item__qty-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.avulso-item__qty {
+  width: 72px;
+  padding: 0.45rem 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-align: center;
+  border: 2px solid var(--fundo-alt);
+  border-radius: var(--radius-sm);
+  background: var(--branco);
+}
+
+.avulso-item__subtotal {
+  font-weight: 800;
+  font-size: 0.9rem;
+  color: var(--azul-petroleo);
+  min-width: 80px;
+  text-align: right;
+}
+
+/* ============================================
+   Monte seu Pedido (buffet / avulsos)
+   ============================================ */
+
+.faca-pedido .pedido__layout {
+  margin-top: 0;
+}
+
 .produtos__tabs {
   display: flex;
   flex-wrap: wrap;
@@ -665,18 +883,6 @@ ul {
   color: var(--branco);
   background: var(--azul-petroleo);
   border-color: var(--azul-petroleo);
-}
-
-/* ============================================
-   Monte seu Pedido
-   ============================================ */
-
-.pedido {
-  background: var(--fundo-alt);
-}
-
-.pedido .section-watermark img {
-  opacity: 0.06;
 }
 
 .pedido__layout {
@@ -1227,12 +1433,32 @@ ul {
     position: static;
   }
 
-  .pedido.in-view .pedido__mobile-bar {
+  .faca-pedido__choices {
+    grid-template-columns: 1fr;
+  }
+
+  .faca-pedido.panel-buffet-open.in-view .pedido__mobile-bar--buffet,
+  .faca-pedido.panel-avulsos-open.in-view .pedido__mobile-bar--avulsos {
     display: block;
   }
 
-  .pedido.in-view {
+  .faca-pedido.panel-buffet-open.in-view,
+  .faca-pedido.panel-avulsos-open.in-view {
     padding-bottom: 5.5rem;
+  }
+
+  .avulso-item {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .avulso-item__qty-wrap {
+    justify-content: flex-start;
+  }
+
+  .avulso-item__subtotal {
+    text-align: left;
+    padding-left: 0;
   }
 }
 
