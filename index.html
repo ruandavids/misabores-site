@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MiSabores — Buffet para festas e eventos em São Paulo. Sabor que fica na memória.">
+  <title>MiSabores | Buffet para Festas e Eventos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="#inicio" class="logo">
+        <img src="imagens/main-logo.png" alt="MiSabores — Sabor que fica na memória" class="logo__img" width="160" height="80">
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="nav" id="nav">
+        <ul class="nav__list">
+          <li><a href="#inicio" class="nav__link">Início</a></li>
+          <li><a href="#sobre" class="nav__link">Sobre</a></li>
+          <li><a href="#servicos" class="nav__link">Serviços</a></li>
+          <li><a href="#produtos" class="nav__link">Produtos</a></li>
+          <li><a href="#monte-seu-pedido" class="nav__link">Monte seu Pedido</a></li>
+          <li><a href="#contato" class="nav__link nav__link--cta">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="inicio">
+      <div class="section-watermark section-watermark--right" aria-hidden="true">
+        <img src="imagens/main-logo.png" alt="">
+      </div>
+      <div class="hero__overlay"></div>
+      <div class="container hero__content">
+        <p class="hero__tag">Buffet &amp; Eventos · Perus, São Paulo</p>
+        <h1 class="hero__title">Sabor que fica na <span>memória</span></h1>
+        <p class="hero__subtitle">
+          Transformamos sua festa ou evento em uma experiência gastronômica inesquecível,
+          com buffet completo e equipe especializada para cuidar de cada detalhe.
+        </p>
+        <div class="hero__actions">
+          <a href="https://wa.me/5511982745572?text=Olá! Gostaria de solicitar um orçamento para meu evento." class="btn btn--primary" target="_blank" rel="noopener noreferrer">
+            Solicitar orçamento
+          </a>
+          <a href="#servicos" class="btn btn--outline">Conheça nossos serviços</a>
+        </div>
+      </div>
+      <div class="hero__decor" aria-hidden="true">
+        <span class="decor-circle decor-circle--1"></span>
+        <span class="decor-circle decor-circle--2"></span>
+        <span class="decor-circle decor-circle--3"></span>
+      </div>
+    </section>
+
+    <!-- Sobre -->
+    <section class="section sobre" id="sobre">
+      <div class="section-watermark section-watermark--left" aria-hidden="true">
+        <img src="imagens/main-logo.png" alt="">
+      </div>
+      <div class="container">
+        <div class="section__header">
+          <span class="section__label">Quem somos</span>
+          <h2 class="section__title">Sobre a MiSabores</h2>
+        </div>
+        <div class="sobre__grid">
+          <div class="sobre__text">
+            <p>
+              A <strong>MiSabores</strong> nasceu do amor pela boa comida e pelo prazer de reunir
+              pessoas em torno de uma mesa bem servida. Atuamos no bairro de <strong>Perus, São Paulo</strong>,
+              oferecendo soluções completas para festas, confraternizações e eventos corporativos.
+            </p>
+            <p>
+              Nosso compromisso é entregar sabor, qualidade e um atendimento acolhedor — do cardápio
+              à montagem do buffet, com profissionais preparados para tornar seu evento especial e sem preocupações.
+            </p>
+            <ul class="sobre__highlights">
+              <li>Buffet personalizado para cada ocasião</li>
+              <li>Equipe experiente e atenciosa</li>
+              <li>Produtos frescos e feitos com carinho</li>
+              <li>Atendimento em São Paulo e região</li>
+            </ul>
+          </div>
+          <div class="sobre__card">
+            <div class="sobre__card-inner">
+              <span class="sobre__card-emoji" aria-hidden="true">✨</span>
+              <h3>Seu evento, nossa paixão</h3>
+              <p>
+                Aniversários, casamentos, festas empresariais ou encontros em família —
+                cuidamos de tudo para que você aproveite cada momento.
+              </p>
+              <a href="https://wa.me/5511982745572?text=Olá! Quero saber mais sobre a MiSabores." class="btn btn--secondary" target="_blank" rel="noopener noreferrer">
+                Fale conosco
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Serviços -->
+    <section class="section servicos" id="servicos">
+      <div class="section-watermark section-watermark--right" aria-hidden="true">
+        <img src="imagens/main-logo.png" alt="">
+      </div>
+      <div class="container">
+        <div class="section__header section__header--center">
+          <span class="section__label">O que fazemos</span>
+          <h2 class="section__title">Nossos Serviços</h2>
+          <p class="section__desc">
+            Soluções completas para seu evento, com profissionais qualificados e atendimento personalizado.
+          </p>
+        </div>
+        <div class="cards-grid" id="servicosGrid">
+          <!-- Preenchido via JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Produtos -->
+    <section class="section produtos" id="produtos">
+      <div class="section-watermark section-watermark--center" aria-hidden="true">
+        <img src="imagens/main-logo.png" alt="">
+      </div>
+      <div class="container">
+        <div class="section__header section__header--center">
+          <span class="section__label">Cardápio</span>
+          <h2 class="section__title">Nossos Produtos</h2>
+          <p class="section__desc">
+            Delícias preparadas com ingredientes selecionados para encantar seus convidados.
+          </p>
+        </div>
+
+        <div class="produtos__tabs" id="produtosTabs" role="tablist" aria-label="Categorias de produtos">
+          <!-- Preenchido via JavaScript -->
+        </div>
+
+        <div class="cards-grid" id="produtosGrid">
+          <!-- Preenchido via JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Monte seu Pedido -->
+    <section class="section pedido" id="monte-seu-pedido">
+      <div class="section-watermark section-watermark--right" aria-hidden="true">
+        <img src="imagens/main-logo.png" alt="">
+      </div>
+      <div class="container container--wide">
+        <div class="section__header section__header--center">
+          <span class="section__label">Orçamento rápido</span>
+          <h2 class="section__title">Monte seu buffet</h2>
+          <p class="section__desc">
+            Preencha as informações do seu evento e monte uma estimativa inicial do seu pedido.
+          </p>
+        </div>
+
+        <div class="pedido__layout">
+          <div class="pedido__main">
+            <form class="pedido__form" id="pedidoForm" novalidate>
+              <fieldset class="pedido__fieldset">
+                <legend class="pedido__legend">Dados do evento</legend>
+                <div class="form-grid">
+                  <label class="form-field">
+                    <span class="form-field__label">Nome do cliente</span>
+                    <input type="text" id="clienteNome" name="nome" placeholder="Seu nome completo" required>
+                  </label>
+                  <label class="form-field">
+                    <span class="form-field__label">WhatsApp</span>
+                    <input type="tel" id="clienteWhatsapp" name="whatsapp" placeholder="(11) 99999-9999">
+                  </label>
+                  <label class="form-field">
+                    <span class="form-field__label">Tipo de evento</span>
+                    <select id="tipoEvento" name="tipoEvento">
+                      <option value="Aniversário">Aniversário</option>
+                      <option value="Casamento">Casamento</option>
+                      <option value="Evento corporativo">Evento corporativo</option>
+                      <option value="Confraternização">Confraternização</option>
+                      <option value="Chá de bebê">Chá de bebê</option>
+                      <option value="Outro">Outro</option>
+                    </select>
+                  </label>
+                  <label class="form-field">
+                    <span class="form-field__label">Data prevista do evento</span>
+                    <input type="date" id="dataEvento" name="dataEvento">
+                  </label>
+                  <label class="form-field">
+                    <span class="form-field__label">Quantidade de adultos</span>
+                    <input type="number" id="qtdAdultos" name="adultos" min="0" value="0">
+                  </label>
+                  <label class="form-field">
+                    <span class="form-field__label">Quantidade de crianças</span>
+                    <input type="number" id="qtdCriancas" name="criancas" min="0" value="0">
+                  </label>
+                  <label class="form-field form-field--full">
+                    <span class="form-field__label">Bairro/Cidade do evento</span>
+                    <input type="text" id="localEvento" name="local" placeholder="Ex.: Perus, São Paulo">
+                  </label>
+                </div>
+              </fieldset>
+
+              <div id="pedidoCategorias" class="pedido__categorias" aria-live="polite">
+                <!-- Preenchido via JavaScript -->
+              </div>
+            </form>
+          </div>
+
+          <aside class="pedido__resumo" id="pedidoResumo" aria-label="Resumo do pedido">
+            <div class="pedido__resumo-inner">
+              <h3 class="pedido__resumo-title">Resumo do pedido</h3>
+              <div class="pedido__resumo-pessoas">
+                <span>Total de pessoas</span>
+                <strong id="resumoPessoas">0</strong>
+              </div>
+              <div class="pedido__resumo-itens" id="resumoItens">
+                <p class="pedido__resumo-vazio">Nenhum item selecionado ainda.</p>
+              </div>
+              <div class="pedido__resumo-subtotais" id="resumoSubtotais"></div>
+              <div class="pedido__resumo-total">
+                <span>Valor total estimado</span>
+                <strong id="resumoTotal">R$ 0,00</strong>
+              </div>
+              <p class="pedido__resumo-nota">
+                Valores provisórios para simulação. O orçamento final pode variar.
+              </p>
+              <button type="button" class="btn btn--primary btn--large btn--block" id="btnEnviarPedido">
+                Enviar pedido pelo WhatsApp
+              </button>
+            </div>
+          </aside>
+        </div>
+      </div>
+
+      <div class="pedido__mobile-bar" id="pedidoMobileBar" aria-hidden="true">
+        <div class="pedido__mobile-bar-inner">
+          <div>
+            <span class="pedido__mobile-label">Total estimado</span>
+            <strong id="resumoTotalMobile">R$ 0,00</strong>
+          </div>
+          <button type="button" class="btn btn--primary" id="btnEnviarPedidoMobile">
+            Enviar pelo WhatsApp
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contato -->
+    <section class="section contato" id="contato">
+      <div class="section-watermark section-watermark--left" aria-hidden="true">
+        <img src="imagens/main-logo.png" alt="">
+      </div>
+      <div class="container">
+        <div class="section__header section__header--center">
+          <span class="section__label">Fale conosco</span>
+          <h2 class="section__title">Entre em Contato</h2>
+          <p class="section__desc">
+            Estamos prontos para montar o buffet perfeito para o seu evento. Solicite um orçamento sem compromisso!
+          </p>
+        </div>
+        <div class="contato__grid">
+          <div class="contato__info">
+            <div class="contato__item">
+              <span class="contato__icon" aria-hidden="true">📍</span>
+              <div>
+                <h3>Localização</h3>
+                <p>Perus, São Paulo — SP</p>
+              </div>
+            </div>
+            <div class="contato__item">
+              <span class="contato__icon" aria-hidden="true">📱</span>
+              <div>
+                <h3>WhatsApp</h3>
+                <p><a href="https://wa.me/5511982745572" target="_blank" rel="noopener noreferrer">+55 11 98274-5572</a></p>
+              </div>
+            </div>
+            <div class="contato__item">
+              <span class="contato__icon" aria-hidden="true">🕐</span>
+              <div>
+                <h3>Atendimento</h3>
+                <p>Segunda a sábado, das 8h às 20h</p>
+              </div>
+            </div>
+          </div>
+          <div class="contato__cta">
+            <h3>Pronto para começar?</h3>
+            <p>
+              Envie uma mensagem pelo WhatsApp com a data do evento, número de convidados
+              e o tipo de serviço desejado. Retornamos o mais breve possível!
+            </p>
+            <a href="https://wa.me/5511982745572?text=Olá! Gostaria de solicitar um orçamento para meu evento." class="btn btn--primary btn--large" target="_blank" rel="noopener noreferrer">
+              Chamar no WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <strong>MiSabores</strong>
+        <p>Sabor que fica na memória</p>
+      </div>
+      <p class="footer__copy">&copy; <span id="year"></span> MiSabores. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Botão fixo WhatsApp -->
+  <a href="https://wa.me/5511982745572?text=Olá! Vim pelo site e gostaria de mais informações." class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.881 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+
+  <script src="script.js"></script>
+</body>
+</html>
